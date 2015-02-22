@@ -1,0 +1,98 @@
+############################################################################################
+## DS scraping assignment: Analyzing Twitter data
+## Kathryn Zickuhr
+## Due February 23, 2015
+## Based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R"
+############################################################################################
+
+setwd("/Users/Katja/DS/scraping/twitter")
+getwd()
+
+## INSTALLING PACKAGES THAT WE WILL USE TODAY
+install.packages("ROAuth")
+install.packages("twitteR")
+install.packages("streamR")
+install.packages("RJSONIO")
+install.packages("ggplot2")
+install.packages("stringr")
+install.packages("tm")
+install.packages("RCurl")
+install.packages("topicmodels")
+install.packages("devtools")
+
+#####################################
+### CREATING YOUR OWN OAUTH TOKEN ###
+#####################################
+
+## Step 1: go to apps.twitter.com and sign in
+## Step 2: click on "Create New App"
+## Step 3: fill name, description, and website (it can be anything, even google.com)
+##			(make sure you leave 'Callback URL' empty)
+## Step 4: Agree to user conditions
+## Step 5: copy consumer key and consumer secret and paste below
+
+library(ROAuth)
+requestURL <- "https://api.twitter.com/oauth/request_token"
+accessURL <- "https://api.twitter.com/oauth/access_token"
+authURL <- "https://api.twitter.com/oauth/authorize"
+consumerKey <- "r6QulDIyJjGS8ToSfrbHiyF0Q"
+consumerSecret <- "eImLpiUIowkxcnySmqJG9WyHk45NxiRrVSZvmkZGl2m3tWErVb"
+
+my_oauth <- OAuthFactory$new(consumerKey=consumerKey,
+  consumerSecret=consumerSecret, requestURL=requestURL,
+  accessURL=accessURL, authURL=authURL)
+
+## run this line and go to the URL that appears on screen
+my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+
+## now you can save oauth token for use in future sessions with twitteR or streamR
+save(my_oauth, file="oauth_token.Rdata")
+
+### NOTE (added February 17, 2015)
+### The twitteR package just changed its authentication method
+### (streamR remains the same)
+### New code to authenticate with twitteR now requires access token and access secret,
+### which can be found in 'Keys and Access Tokens' tab in apps.twitter.com
+
+accessToken = '24484875-YKgY4EBOHvQXli7cftX277oH6SsPTxiiisxjClGlk'
+accessSecret = '5enVsckD87iEyARq6V92vmMEgAgSFNWN7YlqbYGxwIl2d'
+
+## testing that it works
+library(twitteR)
+setup_twitter_oauth(consumer_key=consumerKey, consumer_secret=consumerSecret,
+	access_token=accessToken, access_secret=accessSecret)
+searchTwitter('obama', n=1)
+
+## from a Windows machine:
+# searchTwitter("obama", cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+
+###############################################
+### DOWNLOADING RECENT TWEETS FROM 10 USERS ###
+###############################################
+
+newsAccounts <- c("GovBeat",
+                  "postlocal",
+                  "postpolitics",
+                  "postworldnews",
+                  "washpostbiz",
+                  "wpinvestigates",
+                  "WSJbreakingnews",
+                  "WSJbusiness",
+                  "WSJmarkets",
+                  "WSJPolitics")
+for (newsAccount in newsAccounts) {
+
+## Using Barbera's function to store the raw JSON data
+source("functions.r")
+
+getTimeline(filename=paste0("tweets_",newsAccount,".json"),
+    n=500, oauth=my_oauth, trim_user="false", newsAccount)
+  
+# it's stored in disk and I can read it with the 'parseTweets' function in
+# the streamR package
+library(streamR)
+tweets <- parseTweets(paste0("tweets_",newsAccount,".json"))
+
+}
+
+# see again smappR package (https://github.com/SMAPPNYU/smappR) for more
