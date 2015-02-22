@@ -11,7 +11,7 @@
 # tweets/media source). One twitter handle = one media source. You get to choose what media
 # sources you want to look at." 
 
-setwd("/Users/Katja/DS/scraping/twitter")
+setwd("~DS/scraping/twitter")
 getwd()
 
 ## INSTALLING PACKAGES THAT WE WILL USE TODAY
@@ -21,12 +21,11 @@ install.packages("ROAuth", "twitteR", "streamR", "RJSONIO", "ggplot2", "stringr"
 ### CREATING YOUR OWN OAUTH TOKEN ###
 #####################################
 
-## Step 1: go to apps.twitter.com and sign in
-## Step 2: click on "Create New App"
-## Step 3: fill name, description, and website (it can be anything, even google.com)
-##			(make sure you leave 'Callback URL' empty)
+## Step 1: Go to apps.twitter.com and sign in
+## Step 2: Click on "Create New App"
+## Step 3: Fill name, description, and website, leave 'Callback URL' empty.
 ## Step 4: Agree to user conditions
-## Step 5: copy consumer key and consumer secret and paste below
+## Step 5: Copy consumer key and consumer secret and paste below
 
 library(ROAuth)
 requestURL <- "https://api.twitter.com/oauth/request_token"
@@ -60,9 +59,9 @@ searchTwitter('obama', n=1)
 ## from a Windows machine:
 # searchTwitter("obama", cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
 
-###############################################
-### DOWNLOADING RECENT TWEETS FROM 10 USERS ###
-###############################################
+########################################################
+### DOWNLOADING RECENT TWEETS FROM 10 MEDIA ACCOUNTS ###
+########################################################
 
 newsAccounts <- c("GovBeat",
                   "postlocal",
@@ -98,9 +97,9 @@ library(streamR)
 library(ggplot2)
 library(grid)
 
-#####################################
-### SENTIMENT ANALYSIS	          ###
-#####################################
+###########################
+### SENTIMENT ANALYSIS  ###
+###########################
 
 fileNames <- c("tweets_GovBeat.json",
                 "tweets_postlocal.json",
@@ -140,7 +139,7 @@ clean_tweets <- function(text){
     return(words)
 }
 
-# now we clean the text
+# Clean the text
 tweets$text[1]
 tweets$text[7]
 
@@ -148,7 +147,7 @@ text <- clean_tweets(tweets$text)
 text[[1]]
 text[[7]]
 
-# a function to classify individual tweets
+# funciton to classify individual tweets
 classify <- function(words, pos.words, neg.words){
     # count number of positive and negative word matches
     pos.matches <- sum(words %in% pos.words)
@@ -156,11 +155,11 @@ classify <- function(words, pos.words, neg.words){
     return(pos.matches - neg.matches)
 }
 
-# this is how we would apply it
+# How we would apply it
 classify(text[[1]], pos.words, neg.words)
 classify(text[[7]], pos.words, neg.words)
 
-# but we want to aggregate over many tweets...
+# Aggregate classifier over many tweets
 classifier <- function(text, pos.words, neg.words){
     # classifier
     scores <- unlist(lapply(text, classify, pos.words, neg.words))
@@ -172,20 +171,14 @@ classifier <- function(text, pos.words, neg.words){
         negative,"% negative,", neutral,"% neutral","(out of", n, "tweets.)\n")
 }
 
-# applying classifier function
+# Applying classifier function
 classifier(text, pos.words, neg.words)
 
 }
 
-# Combining tweets from separate accounts into one file and conducting the analysis:
+# We now have the results for each individual news account.
 
-setwd("/Users/Katja/DS/scraping/twitter")
-getwd()
-
-# Loading libraries we will use
-library(streamR)
-library(ggplot2)
-library(grid)
+### Combine tweets from separate accounts into one file to analyze as a whole:
 
 tweets <- parseTweets("merged_tweets.json")
 
@@ -219,7 +212,7 @@ text <- clean_tweets(tweets$text)
 text[[1]]
 text[[7]]
 
-# a function to classify individual tweets
+# function to classify individual tweets
 classify <- function(words, pos.words, neg.words){
   # count number of positive and negative word matches
   pos.matches <- sum(words %in% pos.words)
@@ -243,3 +236,5 @@ classifier <- function(text, pos.words, neg.words){
 
 # applying classifier function
 classifier(text, pos.words, neg.words)
+
+# We now have the results classifying the entire collection of tweets.
