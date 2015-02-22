@@ -33,9 +33,9 @@ folder: https://github.com/kz55/DS-scraping/tree/master/data
 ### Individual results
 
 Using Barberá's methods and lexicon for basic sentiment analysis, I found each source to
-have the following sentiment levels:
+have the following sentiment levels (n=500 for each):
 
-Source | @TwitterName| Focus | Positive | Neutral | Negative
+Source | @TwitterName| Focus | % Positive | % Neutral | % Negative
 ----- | ----- | ----- | ----- | ----- | -----
 Washington Post | @postworldnews | International | 17 | 45 | 38
 Washington Post | @wpinvestigates | Investigative | 17 | 49 | 34
@@ -58,9 +58,9 @@ These results are illustrated in the output_individual.png file:
 
 For all 5000 tweets, the overall sentiment levels are:
 
-Source | Positive | Neutral | Negative
+Source | % Positive | % Neutral | % Negative
 ----- | ----- | ----- | -----
-Total (n=5000) | 23% | 51% | 26%
+Total (n=5000) | 23 | 51 | 26
 
 [[CSV file](https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv)]
 
