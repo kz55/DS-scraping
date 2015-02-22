@@ -30,18 +30,18 @@ Source | URL
 Using Barberá's methods and lexicon for basic sentiment analysis, I found each source to
 have the following sentiment levels:
 
-Source | Positive | Neutral | Negative
------ | ----- | ----- | -----
-1 | postworldnews | 17 | 45 | 38
-2 | wpinvestigates | 17 | 49 | 34
-3 | postlocal | 17 | 52 | 31
-4 | WSJmarkets | 26 | 47 | 27
-5 | WSJbreakingnews | 25 | 50 | 25
-6 | washpostbiz | 26 | 52 | 22
-7 | WSJbusiness | 25 | 53 | 22
-8 | WSJPolitics | 31 | 47 | 22
-9 | GovBeat | 24 | 57 | 19
-10 | postpolitics | 25 | 56 | 19
+Source | @TwitterName| Focus | Positive | Neutral | Negative
+----- | ----- | ----- | ----- | ----- | -----
+Washington Post | @postworldnews | International | 17 | 45 | 38
+Washington Post | @wpinvestigates | Investigative | 17 | 49 | 34
+Washington Post | @postlocal | Local | 17 | 52 | 31
+Wall Street Journal | @WSJmarkets | Business/Finance | 26 | 47 | 27
+Wall Street Journal | @WSJbreakingnews | Breaking news | 25 | 50 | 25
+Washington Post | Business/Finance | @washpostbiz | 26 | 52 | 22
+Wall Street Journal | @WSJbusiness | Business/Finance | 25 | 53 | 22
+Wall Street Journal | @WSJPolitics | Politics/Government | 31 | 47 | 22
+Washington Post | @GovBeat | Politics/Government | 24 | 57 | 19
+Washington Post | @postpolitics | Politics/Government | 25 | 56 | 19
 
 These results are illustrated in the output_individual.png file.
 
