@@ -25,14 +25,14 @@ Source | URL
 9. @GovBeat | http://twitter.com/GovBeat
 10. @postpolitics | http://twitter.com/postpolitics
 
-The JSON files containing the individual and merged tweets are available in the "data"
-folder: https://github.com/kz55/DS-scraping/tree/master/data
+The CSV and JSON files containing the individual and merged tweets are available [in the
+"data" folder](https://github.com/kz55/DS-scraping/tree/master/data).
 
 ## Results
 
 ### Individual results
 
-Using Barberá's methods and lexicon for basic sentiment analysis, I found each source to
+Using Barberá's methods and [lexicon](https://github.com/kz55/DS-scraping/blob/master/files/lexicon.csv) for basic sentiment analysis, I found each source to
 have the following sentiment levels (n=500 for each):
 
 Source | @TwitterName| Focus | % Positive | % Neutral | % Negative
@@ -64,9 +64,10 @@ Total (n=5000) | 23 | 51 | 26
 
 [[CSV file](https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv)]
 
-This output is illustrated in the output_total.png file, created in R:
+This output is illustrated in the output_total.png file, created in R, which shows
+the total number of tweets in each category:
 
 ![Total results](https://github.com/kz55/DS-scraping/blob/master/output_total.png)
 
-## Analysis
+## Conclusion
 
