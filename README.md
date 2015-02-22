@@ -48,6 +48,7 @@ These results are illustrated in the output_individual.png file.
 For all 5000 tweets, the overall sentiment levels are:
 
 Source | Positive | Neutral | Negative
+----- | ----- | ----- | -----
 Total (n=5000) | 23% | 51% | 26%
 
 This output is illustrated in the output_total.png file.
