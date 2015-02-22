@@ -4,12 +4,14 @@
 ## Due February 23, 2015
 ############################################################################################
 
-# This portion scrapes 5000 tweets from news accounts on Twitter (500 each from 10 accounts),
-# based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R".
+# This portion scrapes 5000 tweets from news accounts on Twitter (500 each from 10
+# accounts), based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media
+# Data with R". After saving the results to a CSV file, we produce two charts illustrating
+# the data (showing the results for individual accounts and for the sample as a whole.)
 
 # "1. Using the Twitter API, download at least 5000 tweets from 10 media sources (or 500
-# tweets/media source). One twitter handle = one media source. You get to choose what media
-# sources you want to look at." 
+# tweets/media source). One twitter handle = one media source. You get to choose what
+# media sources you want to look at." 
 
 setwd("~DS/scraping/twitter")
 getwd()
@@ -87,9 +89,9 @@ tweets <- parseTweets(paste0("tweets_",newsAccount,".json"))
 
 }
 
-##############################################################################################
+##########################################################################################
 
-# This portion conducts basic sentiment anlysis on the 5000 media tweets previously gathered,
+# This portion conducts basic sentiment analysis on the 5000 media tweets previously gathered,
 # based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R".
 
 # Loading libraries we will use
@@ -238,3 +240,24 @@ classifier <- function(text, pos.words, neg.words){
 classifier(text, pos.words, neg.words)
 
 # We now have the results classifying the entire collection of tweets.
+
+################################################
+### CREATING CHARTS ILLUSTRATING THE RESULTS ###
+################################################
+
+# This creates a stacked bar chart showing the individual sentiment counts for each
+# Twitter account, based on a CSV file of the results.
+
+install.packages("reshape2", "ggthemes")
+
+sentiment_indiv <- read.csv("indiv_results.csv", header=T, sep=",", fill=T)
+
+library(reshape2)
+indiv2 <- melt(sentiment_indiv, id.var="Source", measured=c("Positive","Neutral","Negative"))
+
+# This chart's colors are green (positive), gray (neutral), and red (negative).
+
+library(ggplot2)
+chart <- ggplot(indiv2, aes(x = Source, y = value, fill = variable)) + geom_bar(stat = "identity")
+chart + labs(x = "'Hard news' accounts on Twitter", y = "% of tweets") + scale_fill_manual(values=c("#00CC66", "#B8B8B8", "#FF5C33")) + theme(axis.text.x=element_text(angle=340,hjust=.1,vjust=1))
+
