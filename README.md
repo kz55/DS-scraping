@@ -1,5 +1,5 @@
 # DS-scraping
-*Scraping assignment for Intro to Data Science*
+## Scraping assignment for Intro to Data Science*
 
 Because the main Twitter accounts for most major news outlets include all types of
 content (including sports, style, etc.), not just “hard news,” I only wanted to examine
@@ -25,7 +25,12 @@ Source | URL
 9. @GovBeat | http://twitter.com/GovBeat
 10. @postpolitics | http://twitter.com/postpolitics
 
-*Individual results*
+The JSON files containing the individual and merged tweets are available in the "data"
+folder: https://github.com/kz55/DS-scraping/tree/master/data
+
+###
+
+~Individual results~
 
 Using Barberá's methods and lexicon for basic sentiment analysis, I found each source to
 have the following sentiment levels:
@@ -43,9 +48,13 @@ Wall Street Journal | @WSJPolitics | Politics/Government | 31 | 47 | 22
 Washington Post | @GovBeat | Politics/Government | 24 | 57 | 19
 Washington Post | @postpolitics | Politics/Government | 25 | 56 | 19
 
-These results are illustrated in the output_individual.png file.
+These results are illustrated in the output_individual.png file:
 
-*Aggregate results*
+https://github.com/kz55/DS-scraping/blob/master/output_individual.png
+
+###
+
+~Aggregate results~
 
 For all 5000 tweets, the overall sentiment levels are:
 
@@ -53,4 +62,14 @@ Source | Positive | Neutral | Negative
 ----- | ----- | ----- | -----
 Total (n=5000) | 23% | 51% | 26%
 
-This output is illustrated in the output_total.png file.
+https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv
+
+This output is illustrated in the output_total.png file:
+
+https://github.com/kz55/DS-scraping/blob/master/output_total.png
+
+
+### 
+
+~Analysis~
+
