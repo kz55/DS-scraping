@@ -1,9 +1,11 @@
 ############################################################################################
-## DS scraping assignment: Analyzing Twitter data
+## DS scraping assignment: Scraping Twitter data
 ## Kathryn Zickuhr
 ## Due February 23, 2015
-## Based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R"
 ############################################################################################
+
+# This portion scrapes 5000 tweets from news accounts on Twitter (500 each from 10 accounts),
+# based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R".
 
 setwd("/Users/Katja/DS/scraping/twitter")
 getwd()
