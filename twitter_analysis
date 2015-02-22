@@ -1,0 +1,181 @@
+##############################################################################################
+## DS scraping assignment: Analyzing Twitter data
+## Kathryn Zickuhr
+## Due February 23, 2015
+## Based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R"
+##############################################################################################
+
+setwd("/Users/Katja/DS/scraping/twitter")
+getwd()
+
+# Loading libraries we will use
+library(streamR)
+library(ggplot2)
+library(grid)
+
+#####################################
+### SENTIMENT ANALYSIS						###
+#####################################
+
+fileNames <- c("tweets_GovBeat.json",
+                "tweets_postlocal.json",
+                "tweets_postpolitics.json",
+                "tweets_postworldnews.json",
+                "tweets_washpostbiz.json",
+                "tweets_wpinvestigates.json",
+                "tweets_WSJbreakingnews.json",
+                "tweets_WSJbusiness.json",
+                "tweets_WSJmarkets.json",
+                "tweets_WSJPolitics.json")
+for (fileName in fileNames) {
+  
+# Loading tweets we will use
+tweets <- parseTweets(fileName)
+
+# loading lexicon of positive and negative words (from Neal Caren)
+lexicon <- read.csv("lexicon.csv", stringsAsFactors=F)
+pos.words <- lexicon$word[lexicon$polarity=="positive"]
+neg.words <- lexicon$word[lexicon$polarity=="negative"]
+
+# a look at a random sample of positive and negative words
+sample(pos.words, 10)
+sample(neg.words, 10)
+
+# function to clean the text
+clean_tweets <- function(text){
+    # loading required packages
+    lapply(c("tm", "Rstem", "stringr"), require, c=T, q=T)
+    # avoid encoding issues by dropping non-unicode characters
+    utf8text <- iconv(text, to='UTF-8-MAC', sub = "byte")
+    # remove punctuation and convert to lower case
+    words <- removePunctuation(utf8text)
+    words <- tolower(words)
+    # spliting in words
+    words <- str_split(words, " ")
+    return(words)
+}
+
+# now we clean the text
+tweets$text[1]
+tweets$text[7]
+
+text <- clean_tweets(tweets$text)
+text[[1]]
+text[[7]]
+
+# a function to classify individual tweets
+classify <- function(words, pos.words, neg.words){
+    # count number of positive and negative word matches
+    pos.matches <- sum(words %in% pos.words)
+    neg.matches <- sum(words %in% neg.words)
+    return(pos.matches - neg.matches)
+}
+
+# this is how we would apply it
+classify(text[[1]], pos.words, neg.words)
+classify(text[[7]], pos.words, neg.words)
+
+# but we want to aggregate over many tweets...
+classifier <- function(text, pos.words, neg.words){
+    # classifier
+    scores <- unlist(lapply(text, classify, pos.words, neg.words))
+    n <- length(scores)
+    positive <- as.integer(length(which(scores>0))/n*100)
+    negative <- as.integer(length(which(scores<0))/n*100)
+    neutral <- 100 - positive - negative
+    cat("The sentiment of",fileName,"is:", positive,"% positive,",
+        negative,"% negative,", neutral,"% neutral","(out of", n, "tweets.)\n")
+}
+
+# applying classifier function
+classifier(text, pos.words, neg.words)
+
+}
+
+''' Now combine into one file
+
+library(rjson)
+files <- c("tweets_GovBeat.json",
+               "tweets_postlocal.json",
+               "tweets_postpolitics.json",
+               "tweets_postworldnews.json",
+               "tweets_washpostbiz.json",
+               "tweets_wpinvestigates.json",
+               "tweets_WSJbreakingnews.json",
+               "tweets_WSJbusiness.json",
+               "tweets_WSJmarkets.json",
+               "tweets_WSJPolitics.json")
+jsonl <- lapply(files, function(f) fromJSON(file = f))
+combined_tweets <- toJSON(jsonl)
+write(combined_tweets, file = "combined_tweets.json")
+'''
+
+# Or the manual way:
+
+setwd("/Users/Katja/DS/scraping/twitter")
+getwd()
+
+# Loading libraries we will use
+library(streamR)
+library(ggplot2)
+library(grid)
+
+tweets <- parseTweets("merged_tweets.json")
+
+# loading lexicon of positive and negative words (from Neal Caren)
+lexicon <- read.csv("lexicon.csv", stringsAsFactors=F)
+pos.words <- lexicon$word[lexicon$polarity=="positive"]
+neg.words <- lexicon$word[lexicon$polarity=="negative"]
+
+# a look at a random sample of positive and negative words
+sample(pos.words, 10)
+sample(neg.words, 10)
+
+# function to clean the text
+clean_tweets <- function(text){
+  # loading required packages
+  lapply(c("tm", "Rstem", "stringr"), require, c=T, q=T)
+  # avoid encoding issues by dropping non-unicode characters
+  utf8text <- iconv(text, to='UTF-8-MAC', sub = "byte")
+  # remove punctuation and convert to lower case
+  words <- removePunctuation(utf8text)
+  words <- tolower(words)
+  # spliting in words
+  words <- str_split(words, " ")
+  return(words)
+}
+
+# now we clean the text
+tweets$text[1]
+tweets$text[7]
+
+text <- clean_tweets(tweets$text)
+text[[1]]
+text[[7]]
+
+# a function to classify individual tweets
+classify <- function(words, pos.words, neg.words){
+  # count number of positive and negative word matches
+  pos.matches <- sum(words %in% pos.words)
+  neg.matches <- sum(words %in% neg.words)
+  return(pos.matches - neg.matches)
+}
+
+# this is how we would apply it
+classify(text[[1]], pos.words, neg.words)
+classify(text[[7]], pos.words, neg.words)
+
+# but we want to aggregate over many tweets...
+classifier <- function(text, pos.words, neg.words){
+  # classifier
+  scores <- unlist(lapply(text, classify, pos.words, neg.words))
+  n <- length(scores)
+  positive <- as.integer(length(which(scores>0))/n*100)
+  negative <- as.integer(length(which(scores<0))/n*100)
+  neutral <- 100 - positive - negative
+  cat("The sentiment of the combined tweets is:", positive,"% positive,",
+      negative,"% negative,", neutral,"% neutral","(out of", n, "tweets.)\n")
+}
+
+# applying classifier function
+classifier(text, pos.words, neg.words)
