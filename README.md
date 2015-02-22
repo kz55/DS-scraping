@@ -12,16 +12,16 @@ regional news, national news, and foreign affairs.
 Using the methods Pablo Barberá created to scrape tweets, I saved 500 tweets from each of
 the following accounts:
 
-1. @postworldnews http://twitter.com/postworldnews
-2. @wpinvestigates http://twitter.com/wpinvestigates
-3. @postlocal http://twitter.com/postlocal
-4. @WSJmarkets http://twitter.com/WSJmarkets
-5. @WSJbreakingnews http://twitter.com/WSJbreakingnews
-6. @washpostbiz http://twitter.com/washpostbiz
-7. @WSJbusiness http://twitter.com/WSJbusiness
-8. @WSJPolitics http://twitter.com/WSJPolitics
-9. @GovBeat http://twitter.com/GovBeat
-10. @postpolitics http://twitter.com/postpolitics
+1. @postworldnews | http://twitter.com/postworldnews
+2. @wpinvestigates | http://twitter.com/wpinvestigates
+3. @postlocal | http://twitter.com/postlocal
+4. @WSJmarkets | http://twitter.com/WSJmarkets
+5. @WSJbreakingnews | http://twitter.com/WSJbreakingnews
+6. @washpostbiz | http://twitter.com/washpostbiz
+7. @WSJbusiness | http://twitter.com/WSJbusiness
+8. @WSJPolitics | http://twitter.com/WSJPolitics
+9. @GovBeat | http://twitter.com/GovBeat
+10. @postpolitics | http://twitter.com/postpolitics
 
 *Individual results*
 
@@ -45,7 +45,9 @@ These results are illustrated in the output_individual.png file.
 
 *Aggregate results*
 
-For all 5000 tweets, the overall sentiment levels are: 23% positive, 26% negative, and
-51% neutral.
+For all 5000 tweets, the overall sentiment levels are:
+
+Source | Positive | Neutral | Negative
+Total (n=5000) | 23% | 51% | 26%
 
 This output is illustrated in the output_total.png file.
