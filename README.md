@@ -10,7 +10,7 @@ focused on “hard news” verticals such as breaking news, politics, economics,
 regional news, national news, and foreign affairs.
 
 Using the methods Pablo Barberá created to scrape tweets, I saved 500 tweets from each of
-the following accounts:
+the following accounts using R:
 
 Source | URL
 ----- | -----
@@ -48,9 +48,9 @@ Wall Street Journal | @WSJPolitics | Politics/Government | 31 | 47 | 22
 Washington Post | @GovBeat | Politics/Government | 24 | 57 | 19
 Washington Post | @postpolitics | Politics/Government | 25 | 56 | 19
 
-[[CSV file](https://github.com/kz55/DS-scraping/blob/master/CSV%20results/indiv_results.csv)
+[[CSV file](https://github.com/kz55/DS-scraping/blob/master/CSV%20results/indiv_results.csv)]
 
-These results are illustrated in the output_individual.png file:
+These results are illustrated in the output_individual.png file, created in R:
 
 ![Individual results](https://github.com/kz55/DS-scraping/blob/master/output_individual.png)
 
@@ -64,7 +64,7 @@ Total (n=5000) | 23 | 51 | 26
 
 [[CSV file](https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv)]
 
-This output is illustrated in the output_total.png file:
+This output is illustrated in the output_total.png file, created in R:
 
 ![Total results](https://github.com/kz55/DS-scraping/blob/master/output_total.png)
 
