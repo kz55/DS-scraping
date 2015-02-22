@@ -28,9 +28,9 @@ Source | URL
 The JSON files containing the individual and merged tweets are available in the "data"
 folder: https://github.com/kz55/DS-scraping/tree/master/data
 
-###
+## Results
 
-~Individual results~
+### Individual results
 
 Using Barberá's methods and lexicon for basic sentiment analysis, I found each source to
 have the following sentiment levels:
@@ -42,19 +42,19 @@ Washington Post | @wpinvestigates | Investigative | 17 | 49 | 34
 Washington Post | @postlocal | Local | 17 | 52 | 31
 Wall Street Journal | @WSJmarkets | Business/Finance | 26 | 47 | 27
 Wall Street Journal | @WSJbreakingnews | Breaking news | 25 | 50 | 25
-Washington Post | Business/Finance | @washpostbiz | 26 | 52 | 22
+Washington Post | @washpostbiz | Business/Finance | 26 | 52 | 22
 Wall Street Journal | @WSJbusiness | Business/Finance | 25 | 53 | 22
 Wall Street Journal | @WSJPolitics | Politics/Government | 31 | 47 | 22
 Washington Post | @GovBeat | Politics/Government | 24 | 57 | 19
 Washington Post | @postpolitics | Politics/Government | 25 | 56 | 19
 
+[[CSV file](https://github.com/kz55/DS-scraping/blob/master/CSV%20results/indiv_results.csv)
+
 These results are illustrated in the output_individual.png file:
 
-https://github.com/kz55/DS-scraping/blob/master/output_individual.png
+![Individual results](https://github.com/kz55/DS-scraping/blob/master/output_individual.png)
 
-###
-
-~Aggregate results~
+### Aggregate results
 
 For all 5000 tweets, the overall sentiment levels are:
 
@@ -62,14 +62,11 @@ Source | Positive | Neutral | Negative
 ----- | ----- | ----- | -----
 Total (n=5000) | 23% | 51% | 26%
 
-https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv
+[[CSV file](https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv)]
 
 This output is illustrated in the output_total.png file:
 
-https://github.com/kz55/DS-scraping/blob/master/output_total.png
+![Total results](https://github.com/kz55/DS-scraping/blob/master/output_total.png)
 
-
-### 
-
-~Analysis~
+## Analysis
 
