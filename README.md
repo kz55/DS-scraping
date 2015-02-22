@@ -12,6 +12,8 @@ regional news, national news, and foreign affairs.
 Using the methods Pablo Barberá created to scrape tweets, I saved 500 tweets from each of
 the following accounts:
 
+Source | URL
+----- | -----
 1. @postworldnews | http://twitter.com/postworldnews
 2. @wpinvestigates | http://twitter.com/wpinvestigates
 3. @postlocal | http://twitter.com/postlocal
