@@ -6,8 +6,9 @@
 
 # This portion scrapes 5000 tweets from news accounts on Twitter (500 each from 10
 # accounts), based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media
-# Data with R". After saving the results to a CSV file, we produce two charts illustrating
-# the data (showing the results for individual accounts and for the sample as a whole.)
+# Data with R”, available at https://github.com/pablobarbera/social-media-workshop. After
+# saving the results to a CSV file, we produce two charts illustrating the data (showing the
+# results for individual accounts and for the sample as a whole.)
 
 # "1. Using the Twitter API, download at least 5000 tweets from 10 media sources (or 500
 # tweets/media source). One twitter handle = one media source. You get to choose what
@@ -93,8 +94,11 @@ tweets <- parseTweets(paste0("tweets_",newsAccount,".json"))
 
 ##########################################################################################
 
+# 2. Code the sentiment of each of the tweets.
+
 # This portion conducts basic sentiment analysis on the 5000 media tweets previously gathered,
-# based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R".
+# based on Pablo Barbera's workshop, "Collecting and Analyzing Social Media Data with R”,
+# available at https://github.com/pablobarbera/social-media-workshop.
 
 # Loading libraries we will use
 library(streamR)
@@ -246,6 +250,8 @@ classifier(text, pos.words, neg.words)
 ################################################
 ### CREATING CHARTS ILLUSTRATING THE RESULTS ###
 ################################################
+
+# 3. Produce a table, graph, interpret the results carefully.
 
 # This creates a stacked bar chart showing the individual sentiment counts for each
 # Twitter account, based on a CSV file of the results.

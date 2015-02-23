@@ -9,8 +9,8 @@ the Wall Street Journal and the Washington Post. Within these two organizations,
 focused on “hard news” verticals such as breaking news, politics, economics, local and
 regional news, national news, and foreign affairs.
 
-Using the methods Pablo Barberá created to scrape tweets, I saved 500 tweets from each of
-the following accounts using R:
+Using the methods from Pablo Barberá's [social media workshop](https://github.com/pablobarbera/social-media-workshop) to scrape tweets, I saved
+500 tweets from each of the following accounts using R:
 
 Source | URL
 ----- | -----
@@ -28,8 +28,7 @@ Source | URL
 Note:The files needed for Barbera’s scripts, functions.r and lexicon.csv, are available
 [in the “files” folder](https://github.com/kz55/DS-scraping/tree/master/files), along with the generated oauth_token.
 
-The CSV and JSON files containing the individual and merged tweets are available [in the
-"data" folder](https://github.com/kz55/DS-scraping/tree/master/data).
+The [CSV](https://github.com/kz55/DS-scraping/tree/master/CSV%20results/tweets) and [JSON](https://github.com/kz55/DS-scraping/tree/master/JSON%20tweets) files containing the individual and merged tweets are also available.
 
 ## Results
 
@@ -50,8 +49,6 @@ Wall Street Journal | @WSJbusiness | Business/Finance | 25 | 53 | 22
 Wall Street Journal | @WSJPolitics | Politics/Government | 31 | 47 | 22
 Washington Post | @GovBeat | Politics/Government | 24 | 57 | 19
 Washington Post | @postpolitics | Politics/Government | 25 | 56 | 19
-
-[[CSV file](https://github.com/kz55/DS-scraping/blob/master/CSV%20results/indiv_results.csv)]
 
 **Analysis**: As the table above shows, the accounts with the lowest proportions of
 positive tweets (and the highest proportions of negative tweets) are from the verticals
@@ -75,8 +72,6 @@ For all 5000 tweets, the overall sentiment levels are:
 Source | % Positive | % Neutral | % Negative
 ----- | ----- | ----- | -----
 Total (n=5000) | 23 | 51 | 26
-
-[[CSV file](https://github.com/kz55/DS-scraping/blob/master/data/total_results.csv)]
 
 This output is illustrated in the output_total.png file, created in R, which shows
 the total number of tweets in each category:
