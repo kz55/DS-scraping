@@ -7,7 +7,7 @@ accounts from news organizations that used separate accounts dedicated to specif
 verticals. I therefore examined Twitter accounts from two national news organizations,
 the Wall Street Journal and the Washington Post. Within these two organizations, I
 focused on “hard news” verticals such as breaking news, politics, economics, local and
-regional news, national news, and foreign affairs.
+regional news, national news, and foreign affairs. The script is available [here](https://github.com/kz55/DS-scraping/blob/master/twitter_scraping_and_analysis).
 
 Using the methods from Pablo Barberá's [social media workshop](https://github.com/pablobarbera/social-media-workshop) to scrape tweets, I saved
 500 tweets from each of the following accounts using R:
