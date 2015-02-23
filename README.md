@@ -53,9 +53,20 @@ Washington Post | @postpolitics | Politics/Government | 25 | 56 | 19
 
 [[CSV file](https://github.com/kz55/DS-scraping/blob/master/CSV%20results/indiv_results.csv)]
 
+**Analysis**: As the table above shows, the accounts with the lowest proportions of
+positive tweets (and the highest proportions of negative tweets) are from the verticals
+devoted to international, investigative, or local news. For instance, the @postworldnews
+account's tweets were 17% positive, 45% neutral, and 38% negative. Meanwhile, the least
+negative accounts were all politics- or government-focused accounts, such as the
+Washington Post's @GovBeat and @postpolitics accounts.
+
 These results are illustrated in the output_individual.png file, created in R:
 
 ![Individual results](https://github.com/kz55/DS-scraping/blob/master/output_individual.png)
+
+**Limitations**: Because I chose to only look at tweets from two main news outlets, it's
+unclear whether these findings would apply to a broader array of news organizations'
+accounts, even those devoted to similar "hard news" topics.
 
 ### Aggregate results
 
@@ -74,3 +85,19 @@ the total number of tweets in each category:
 
 ## Conclusion
 
+Based on an analysis of 5000 tweets from 10 dedicated "hard news" Twitter accounts, the
+news appears to be slightly more "negative" than "positive", but not substantially so.
+Perhaps surprisingly, it appears that accounts dealing with politics and government are
+less "negative" than other types of hard news accounts such as local or international 
+news, although our sample was far too small to make any claims beyond these 10 accounts.
+
+In addition, it is possible that the lexicon used was not well suited to the specialized
+types of language that is used in discussions of business/finance, politics, and other
+types of "hard news". Additional analysis would be needed to examine how relevant the
+lexicon was and whether there were any major terms that were not included which might
+have biased the results.
+
+Finally, these results are from a particular moment in time (the afternoon of Saturday,
+February 22, 2015), and due to the real-time nature of Twitter, any recent news events
+that were particularly  "positive" or "negative" might have affected the results for
+this (non-random) sample.
