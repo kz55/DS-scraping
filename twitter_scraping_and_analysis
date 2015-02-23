@@ -19,6 +19,8 @@ getwd()
 ## INSTALLING PACKAGES THAT WE WILL USE TODAY
 install.packages("ROAuth", "twitteR", "streamR", "RJSONIO", "ggplot2", "stringr", "tm", "RCurl")
 
+# Also download and install Rstem from http://www.omegahat.org/Rstem/
+
 #####################################
 ### CREATING YOUR OWN OAUTH TOKEN ###
 #####################################

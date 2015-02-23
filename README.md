@@ -25,6 +25,9 @@ Source | URL
 9. @GovBeat | http://twitter.com/GovBeat
 10. @postpolitics | http://twitter.com/postpolitics
 
+Note:The files needed for Barbera’s scripts, functions.r and lexicon.csv, are available
+[in the “files” folder](https://github.com/kz55/DS-scraping/tree/master/files), along with the generated oauth_token.
+
 The CSV and JSON files containing the individual and merged tweets are available [in the
 "data" folder](https://github.com/kz55/DS-scraping/tree/master/data).
 
