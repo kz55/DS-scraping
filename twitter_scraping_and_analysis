@@ -36,8 +36,8 @@ library(ROAuth)
 requestURL <- "https://api.twitter.com/oauth/request_token"
 accessURL <- "https://api.twitter.com/oauth/access_token"
 authURL <- "https://api.twitter.com/oauth/authorize"
-consumerKey <- "r6QulDIyJjGS8ToSfrbHiyF0Q"
-consumerSecret <- "eImLpiUIowkxcnySmqJG9WyHk45NxiRrVSZvmkZGl2m3tWErVb"
+consumerKey <- "%key%"
+consumerSecret <- "%secret%"
 
 my_oauth <- OAuthFactory$new(consumerKey=consumerKey,
   consumerSecret=consumerSecret, requestURL=requestURL,
@@ -52,8 +52,8 @@ save(my_oauth, file="oauth_token.Rdata")
 ### Twitter's access token and access secret can be found in 'Keys and Access Tokens'
 ### tab in apps.twitter.com
 
-accessToken = '24484875-YKgY4EBOHvQXli7cftX277oH6SsPTxiiisxjClGlk'
-accessSecret = '5enVsckD87iEyARq6V92vmMEgAgSFNWN7YlqbYGxwIl2d'
+accessToken = '%token&'
+accessSecret = '%secret%'
 
 ## testing that it works
 library(twitteR)
